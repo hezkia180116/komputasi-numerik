@@ -394,6 +394,30 @@
   </li>
 
     
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../numerical-linear/" class="md-nav__link">
+      Numerical Solution of System of Linear Algebraic Equations
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../numerical-ordinal/" class="md-nav__link">
+      Numerical Solutions of Ordinary Differential Equations
+    </a>
+  </li>
+
+    
   </ul>
 </nav>
                   </div>
@@ -588,10 +612,10 @@
 <h2 id="definisi">Definisi<a class="headerlink" href="#definisi" title="Permanent link">&para;</a></h2>
 <div>
 <div class="MathJax_Preview">
-f'(x) = lim h→0 f(x + h) - f(x) / h
+f'(x) = lim_h→0  \frac{f(x + h) - f(x)} {h}
 </div>
 <script type="math/tex; mode=display">
-f'(x) = lim h→0 f(x + h) - f(x) / h
+f'(x) = lim_h→0  \frac{f(x + h) - f(x)} {h}
 </script>
 </div>
 <p>Bila persamaan fungsi <em>f(x)</em> diberikan secara eksplisit, maka kita dapat menentukan fungsi turunannya, <em>f' (x), f" (x), ..., f^ (n+1) (x)</em>, lalu menggunakannya untuk menghitung nilai turunan fungsi <em>dix =t</em>.  Tetapi jika fungsi <em>f(x)</em> tidak diketahui secara eksplisit, tetapi kita hanya memiliki beberapa titik data saja. Pada kasus seperti ini kita tidak dapat menemukan nilai turunan fungsi secara analitik. Sebaliknya, pada kasus lain, meskipun <em>f(x)</em> diketahui secara eksplisit tetapi bentuknya rumit sehingga menentukan fungsi turunannya merupakan pekerjaan yang tidak mangkus</p>
@@ -605,17 +629,17 @@ numerik:</p>
 </ol>
 <h3 id="hampiran-selisih-maju-forward-difference-approximation">Hampiran Selisih Maju (forward difference approximation)<a class="headerlink" href="#hampiran-selisih-maju-forward-difference-approximation" title="Permanent link">&para;</a></h3>
 <p>$$
-f'(x_0) = f(x_0 + h) - f(x_0) / h = f_1 - f_0 / h
+f'(x_0) = \frac{f(x_0 + h) - f(x_0)}{h} = \frac{f_1 - f_0}{h}
 $$
 <img alt="1.1" src="https://thumbs2.imgbox.com/34/b5/qQ9K8C6i_t.png" /></p>
 <h3 id="hampiran-selisih-mundur-backward-difference-approximation">Hampiran selisih-mundur (backward difference approximation)<a class="headerlink" href="#hampiran-selisih-mundur-backward-difference-approximation" title="Permanent link">&para;</a></h3>
 <p>$$
-f'(x_0) = f(x_0) - f(x_0 - h) / h = f_0 - f_1 / h
+f'(x_0) = \frac{f(x_0) - f(x_0 - h)}{h} = \frac{f_0 - f_1}{h}
 $$
 <img alt="1.2" src="https://thumbs2.imgbox.com/82/e8/dyfmfC21_t.png" /></p>
 <h3 id="hampiran-selisih-pusat-central-difference-approximation">Hampiran selisih-pusat (central difference approximation)<a class="headerlink" href="#hampiran-selisih-pusat-central-difference-approximation" title="Permanent link">&para;</a></h3>
 <p>$$
-f'(x_0) = f(x_0 + h) - f(x_0 - h) / 2h = f_1 - f_-1 / 2h
+f'(x_0) = \frac{f(x_0 + h) - f(x_0 - h)}{2h} = \frac{f_1 - f_-1}{2h}
 $$
 <img alt="1.3" src="https://images2.imgbox.com/80/5e/bPEbSExv_o.png" /></p>
 <h2 id="penurunan-rumus-dengan-deret-taylor">Penurunan Rumus dengan Deret Taylor<a class="headerlink" href="#penurunan-rumus-dengan-deret-taylor" title="Permanent link">&para;</a></h2>
@@ -623,10 +647,10 @@ $$
 <p>Uraikan <em>f(x<sub>i+1</sub></em> di sekitar <em>x<sub>i</sub></em> :</p>
 <div>
 <div class="MathJax_Preview">
-f(x_i+1) = f(x_i) + (x_i+1 - x_i) / 1! f'(x_i) + (x_i+1 - x_i)^2 / 2! f''(x_i) + ....
+f(x_i+1) = \frac{f(x_i) + (x_i+1 - x_i)}{1!} f'(x_i) + \frac{(x_i+1 - x_i)^2}{2!} f''(x_i) + ....
 </div>
 <script type="math/tex; mode=display">
-f(x_i+1) = f(x_i) + (x_i+1 - x_i) / 1! f'(x_i) + (x_i+1 - x_i)^2 / 2! f''(x_i) + ....
+f(x_i+1) = \frac{f(x_i) + (x_i+1 - x_i)}{1!} f'(x_i) + \frac{(x_i+1 - x_i)^2}{2!} f''(x_i) + ....
 </script>
 </div>
 <div>
@@ -647,28 +671,28 @@ hf_i' = f_i+1 - f_i - h^2 / 2f_1" + ...
 </div>
 <div>
 <div class="MathJax_Preview">
-f_i' = f_i+1 - f_i / h - h/2 f_i"
+f_i' = \frac{f_i+1 - f_i}{h} - h/2 f_i"
 </div>
 <script type="math/tex; mode=display">
-f_i' = f_i+1 - f_i / h - h/2 f_i"
+f_i' = \frac{f_i+1 - f_i}{h} - h/2 f_i"
 </script>
 </div>
 <div>
 <div class="MathJax_Preview">
-f_i' = f_i+1 - f_i / h + O(h)
+f_i' = \frac{f_i+1 - f_i}{h} + O(h)
 </div>
 <script type="math/tex; mode=display">
-f_i' = f_i+1 - f_i / h + O(h)
+f_i' = \frac{f_i+1 - f_i}{h} + O(h)
 </script>
 </div>
 <p>yang dalam hal ini, <em>O(h) = h/2 f "(t), x<sub>i</sub> &lt; t &lt; x<sub>i+1</sub></em></p>
 <p>Untuk nilai-nilai <em>f</em> di <em>x<sub>0</sub></em> dan<em> x<sub>1</sub></em> persamaan rumusnya menjadi :</p>
 <div>
 <div class="MathJax_Preview">
-f_o' = f_1 - f_0 / h + O(h)
+f_o' = \frac{f_1 - f_0} {h} + O(h)
 </div>
 <script type="math/tex; mode=display">
-f_o' = f_1 - f_0 / h + O(h)
+f_o' = \frac{f_1 - f_0} {h} + O(h)
 </script>
 </div>
 <p>yang dalam hal ini <em>O(h) = h/2 f "(t), x<sub>i</sub> &lt; t &lt; x<sub>i+1</sub></em></p>
@@ -676,10 +700,10 @@ f_o' = f_1 - f_0 / h + O(h)
 <p>Uraikan <em>f(x<sub>i-1</sub></em> di sekitar <em>x<sub>i</sub></em> :</p>
 <div>
 <div class="MathJax_Preview">
-f(x_i-1) = f(x_i) + (x_i+1 - x_i) / 1! f'(x_i) + (x_i+1 - x_i)^2 / 2! f''(x_i) + ....
+f(x_i-1) = f(x_i) + \frac{(x_i+1 - x_i)}{1!} f'(x_i) + \frac{(x_i+1 - x_i)^2}{2!} f''(x_i) + ....
 </div>
 <script type="math/tex; mode=display">
-f(x_i-1) = f(x_i) + (x_i+1 - x_i) / 1! f'(x_i) + (x_i+1 - x_i)^2 / 2! f''(x_i) + ....
+f(x_i-1) = f(x_i) + \frac{(x_i+1 - x_i)}{1!} f'(x_i) + \frac{(x_i+1 - x_i)^2}{2!} f''(x_i) + ....
 </script>
 </div>
 <div>
@@ -700,28 +724,28 @@ hf_i' = f_i - f_i-1 - h^2 / 2f_1" + ...
 </div>
 <div>
 <div class="MathJax_Preview">
-f_i' = f_i - f_i-1 / h - h/2 f_i"
+f_i' = \frac{f_i - f_i-1}{h} - h/2 f_i
 </div>
 <script type="math/tex; mode=display">
-f_i' = f_i - f_i-1 / h - h/2 f_i"
+f_i' = \frac{f_i - f_i-1}{h} - h/2 f_i
 </script>
 </div>
 <div>
 <div class="MathJax_Preview">
-f_i' = f_i - f_i-1 / h + O(h)
+f_i' = \frac{f_i - f_i-1}{h} + O(h)
 </div>
 <script type="math/tex; mode=display">
-f_i' = f_i - f_i-1 / h + O(h)
+f_i' = \frac{f_i - f_i-1}{h} + O(h)
 </script>
 </div>
 <p>yang dalam hal ini, <em>O(h) = - h/2 f "(t), x<sub>i-1</sub> &lt; t &lt; x<sub>i</sub></em></p>
 <p>Untuk nilai-nilai <em>f</em> di <em>x<sub>0</sub></em> dan<em> x<sub>-1</sub></em> persamaan rumusnya menjadi :</p>
 <div>
 <div class="MathJax_Preview">
-f_o' = f_1 - f_0 / h + O(h)
+f_o' = \frac{f_1 - f_0}{h} + O(h)
 </div>
 <script type="math/tex; mode=display">
-f_o' = f_1 - f_0 / h + O(h)
+f_o' = \frac{f_1 - f_0}{h} + O(h)
 </script>
 </div>
 <p>yang dalam hal ini <em>O(h) = - h/2 f "(t), x<sub>i+1</sub> &lt; t &lt; x<sub>i</sub></em></p>
@@ -791,29 +815,29 @@ f_i+1 - 2f_i + f_i-1 = h^2 f_i" + h^4 /12 f_i^(4)
 </div>
 <div>
 <div class="MathJax_Preview">
-f_i" = f_i+1 - 2f_i + f_i-1 / h^2 - h^2 /12f_i^(4)
+f_i" = \frac{f_i+1 - 2f_i + f_i-1}{h^2} - h^2 /12f_i^(4)
 </div>
 <script type="math/tex; mode=display">
-f_i" = f_i+1 - 2f_i + f_i-1 / h^2 - h^2 /12f_i^(4)
+f_i" = \frac{f_i+1 - 2f_i + f_i-1}{h^2} - h^2 /12f_i^(4)
 </script>
 </div>
 <p>jadi, </p>
 <div>
 <div class="MathJax_Preview">
-f_i" = f_i+1 - 2f_i + f_i-1 / h^2 - O(h^2)
+f_i" = \frac{f_i+1 - 2f_i + f_i-1}{h^2} - O(h^2)
 </div>
 <script type="math/tex; mode=display">
-f_i" = f_i+1 - 2f_i + f_i-1 / h^2 - O(h^2)
+f_i" = \frac{f_i+1 - 2f_i + f_i-1}{h^2} - O(h^2)
 </script>
 </div>
 <p>yang dalam hal ini, <em>O(h^2) = - h^2 / 12f^(4)(t), x<sub>i-1</sub> &lt; t &lt; x<sub>i+2</sub></em></p>
 <p>Untuk nilai-nilai <em>f</em> di <em>x<sub>-1</sub>, </em>x<sub>0</sub> dan <em>x<sub>1</sub></em> persamaan rumusnya :</p>
 <div>
 <div class="MathJax_Preview">
-f_0" = f_1 - 2f_0 + f_1 / h^2 + O(h^2)
+f_0" = \frac{f_1 - 2f_0 + f_1}{h^2} + O(h^2)
 </div>
 <script type="math/tex; mode=display">
-f_0" = f_1 - 2f_0 + f_1 / h^2 + O(h^2)
+f_0" = \frac{f_1 - 2f_0 + f_1}{h^2} + O(h^2)
 </script>
 </div>
 <p>Yang dalam hal ini, <em>O(h^2) = - h^2 / 12 f^(4)(t), x<sub>i-1</sub> &lt; t &lt; x<sub>i+1</sub></em></p>
@@ -821,20 +845,20 @@ f_0" = f_1 - 2f_0 + f_1 / h^2 + O(h^2)
 <p>Dengan cara yang sama seperti di atas,diperoleh :</p>
 <div>
 <div class="MathJax_Preview">
-f_1" = f_i-2 - 2f_i-1 + f_i / h^2 + O(h),
+f_1" = \frac{f_i-2 - 2f_i-1 + f_i}{h^2} + O(h),
 </div>
 <script type="math/tex; mode=display">
-f_1" = f_i-2 - 2f_i-1 + f_i / h^2 + O(h),
+f_1" = \frac{f_i-2 - 2f_i-1 + f_i}{h^2} + O(h),
 </script>
 </div>
 <p>yang dalam hal ini, <em>O(h) = h f "(t), x<sub>i-2</sub> &lt; t &lt; x<sub>i</sub></em></p>
 <p>Untuk nilai-nilai <em>f</em> di <em>x<sub>-2</sub>, </em>x<sub>-1</sub> dan <em>x<sub>0</sub></em> persamaan rumusnya :</p>
 <div>
 <div class="MathJax_Preview">
-f_0" = f_2 - 2f_1 + f_0 / h^2 + O(h)
+f_0" = \frac{f_2 - 2f_1 + f_0}{h^2} + O(h)
 </div>
 <script type="math/tex; mode=display">
-f_0" = f_2 - 2f_1 + f_0 / h^2 + O(h)
+f_0" = \frac{f_2 - 2f_1 + f_0}{h^2} + O(h)
 </script>
 </div>
 <p>Yang dalam hal ini, <em>O(h) = - h f"(t), x<sub>i-2</sub> &lt; t &lt; x<sub>i</sub></em></p>
@@ -842,38 +866,58 @@ f_0" = f_2 - 2f_1 + f_0 / h^2 + O(h)
 <p>Dengan cara yang sama seperti di atas, diperoleh :</p>
 <div>
 <div class="MathJax_Preview">
-f_1" = f_i+2 - 2f_i+1 + f_i / h^2 + O(h),
+f_1" = \frac{f_i+2 - 2f_i+1 + f_i}{h^2} + O(h),
 </div>
 <script type="math/tex; mode=display">
-f_1" = f_i+2 - 2f_i+1 + f_i / h^2 + O(h),
+f_1" = \frac{f_i+2 - 2f_i+1 + f_i}{h^2} + O(h),
 </script>
 </div>
 <p>yang dalam hal ini, <em>O(h) = - h f "(t), x<sub>i</sub> &lt; t &lt; x<sub>i+2</sub></em></p>
 <p>Untuk nilai-nilai <em>f</em> di <em>x<sub>0</sub>, </em>x<sub></sub> dan <em>x<sub>2</sub></em> persamaan rumusnya :</p>
 <div>
 <div class="MathJax_Preview">
-f_0" = f_2 - 2f_1 + f_0 / h^2 + O(h)
+f_0" = \frac{f_2 - 2f_1 + f_0}{h^2} + O(h)
 </div>
 <script type="math/tex; mode=display">
-f_0" = f_2 - 2f_1 + f_0 / h^2 + O(h)
+f_0" = \frac{f_2 - 2f_1 + f_0}{h^2} + O(h)
 </script>
 </div>
 <p>Yang dalam hal ini, <em>O(h) = - h f"(t), x<sub>1</sub> &lt; t &lt; x<sub>i+2</sub></em></p>
 <h2 id="penurunan-rumus-turunan-numerik-dengan-polinom-interpolasi">Penurunan Rumus Turunan Numerik dengan Polinom Interpolasi<a class="headerlink" href="#penurunan-rumus-turunan-numerik-dengan-polinom-interpolasi" title="Permanent link">&para;</a></h2>
 <p>Polinom Newton-Gregory:</p>
-<p>$$
-f(x) ≈ p_n(x) = f_0 + s∆f_0 / 1! + s(s-1) ∆^2 f_0 / 2! + s(s-1) (s-2) ∆^3 f_0 / 3! + s(s-1) (s-2)....(s-n+1) ∆^n f_0 / n!</p>
-<p>= F(s)
-$$</p>
+<div>
+<div class="MathJax_Preview">
+f(x) ≈ p_n(x) = f_0 + \frac{s∆f_0}{1!} + s(s-1) \frac{∆^2 f_0}{2!} + s(s-1)(s-2) \frac{∆^3 f_0}{3!} + 
+</div>
+<script type="math/tex; mode=display">
+f(x) ≈ p_n(x) = f_0 + \frac{s∆f_0}{1!} + s(s-1) \frac{∆^2 f_0}{2!} + s(s-1)(s-2) \frac{∆^3 f_0}{3!} + 
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+s(s-1) (s-2)....(s-n+1) \frac{∆^n f_0}{n!}
+</div>
+<script type="math/tex; mode=display">
+s(s-1) (s-2)....(s-n+1) \frac{∆^n f_0}{n!}
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+= F(s)
+</div>
+<script type="math/tex; mode=display">
+= F(s)
+</script>
+</div>
 <p>Yang dalam ini, <em>s = (x-x<sub>0</sub>) / h</em></p>
 <h3 id="hampiran-selisih-maju_2">Hampiran selisih-maju<a class="headerlink" href="#hampiran-selisih-maju_2" title="Permanent link">&para;</a></h3>
 <p>Bila digunakan titik <em>x<sub>0</sub></em> dan <em>x<sub>1</sub></em> :</p>
 <div>
 <div class="MathJax_Preview">
-f'(x_0) = 1/h (∆f_0) = f_1 - f_0 / h
+f'(x_0) = 1/h (∆f_0) = \frac{f_1 - f_0}{h}
 </div>
 <script type="math/tex; mode=display">
-f'(x_0) = 1/h (∆f_0) = f_1 - f_0 / h
+f'(x_0) = 1/h (∆f_0) = \frac{f_1 - f_0}{h}
 </script>
 </div>
 <p>bila digunakan titik <em>x<sub>0</sub>, x<sub>1</sub>,</em> dan <em>x<sub>2</sub></em> :</p>
@@ -928,10 +972,10 @@ f'(x_0) = 1/h (∆f_0 - 1/2∆^2 f_0)
 </div>
 <div>
 <div class="MathJax_Preview">
-f'(x_0) = -3f_0 + 4f_1 - f_2 / 2h
+f'(x_0) = \frac{-3f_0 + 4f_1 - f_2}{2h}
 </div>
 <script type="math/tex; mode=display">
-f'(x_0) = -3f_0 + 4f_1 - f_2 / 2h
+f'(x_0) = \frac{-3f_0 + 4f_1 - f_2}{2h}
 </script>
 </div>
 <h3 id="hampiran-selisih-mundur_2">Hampiran selisih-mundur<a class="headerlink" href="#hampiran-selisih-mundur_2" title="Permanent link">&para;</a></h3>
@@ -939,10 +983,10 @@ f'(x_0) = -3f_0 + 4f_1 - f_2 / 2h
 bila digunakan titik-titik <em>x<sub>0</sub></em> dan <em>x<sub>1</sub></em> :</p>
 <div>
 <div class="MathJax_Preview">
-f'(x_0) = 1/h (∇f_0) = f_0 - f_-1 / h
+f'(x_0) = 1/h (∇f_0) = \frac{f_0 - f_{-1})}{h}
 </div>
 <script type="math/tex; mode=display">
-f'(x_0) = 1/h (∇f_0) = f_0 - f_-1 / h
+f'(x_0) = 1/h (∇f_0) = \frac{f_0 - f_{-1})}{h}
 </script>
 </div>
 <h3 id="hampiran-selisih-pusat_2">Hampiran selisih-pusat<a class="headerlink" href="#hampiran-selisih-pusat_2" title="Permanent link">&para;</a></h3>
@@ -990,29 +1034,29 @@ f '(x_1) = 1/h (∆f_0 + 1/2 ∆^2 f_0)
 </div>
 <div>
 <div class="MathJax_Preview">
-= f_2 - f_0 / 2h
+= \frac{f_2 - f_0}{2h}
 </div>
 <script type="math/tex; mode=display">
-= f_2 - f_0 / 2h
+= \frac{f_2 - f_0}{2h}
 </script>
 </div>
 <p>Untuk titik <em>x<sub>1</sub>, x<sub>0</sub></em> dan <em>x<sub>1</sub></em> :</p>
 <div>
 <div class="MathJax_Preview">
-f'(x_0) = f_1 - f_-1 / 2h
+f'(x_0) = \frac{f_1 - f_{-1}}{2h}
 </div>
 <script type="math/tex; mode=display">
-f'(x_0) = f_1 - f_-1 / 2h
+f'(x_0) = \frac{f_1 - f_{-1}}{2h}
 </script>
 </div>
 <h2 id="rumus-untuk-turunan-keduafx-dengan-polinom-interpolasi">Rumus untuk Turunan Kedua,f"(x), dengan Polinom Interpolasi<a class="headerlink" href="#rumus-untuk-turunan-keduafx-dengan-polinom-interpolasi" title="Permanent link">&para;</a></h2>
 <p>Turunan kedua <em>f</em> adalah </p>
 <div>
 <div class="MathJax_Preview">
-d^2 f / dx^2 = d/ds (df/dx) ds/dx
+\frac{d^2 f}{dx^2} = \frac{d}{ds} (\frac{df}{dx}) \frac{ds}{dx}
 </div>
 <script type="math/tex; mode=display">
-d^2 f / dx^2 = d/ds (df/dx) ds/dx
+\frac{d^2 f}{dx^2} = \frac{d}{ds} (\frac{df}{dx}) \frac{ds}{dx}
 </script>
 </div>
 <div>
@@ -1076,10 +1120,10 @@ f"(x_1) = 1/h^2 (∆^2 f_0 + (1 - 1) ∆^3 f_0)
 <p>Untuk titik <em>x<sub>1</sub>, x<sub>0</sub></em> dan <em>x<sub>1</sub></em> :</p>
 <div>
 <div class="MathJax_Preview">
-f"(x_0) = f_-1 - 2f_0 + f_1 / h^2
+f"(x_0) = \frac{f_-1 - 2f_0 + f_1}{h^2}
 </div>
 <script type="math/tex; mode=display">
-f"(x_0) = f_-1 - 2f_0 + f_1 / h^2
+f"(x_0) = \frac{f_-1 - 2f_0 + f_1}{h^2}
 </script>
 </div>
                 
@@ -1114,6 +1158,20 @@ f"(x_0) = f_-1 - 2f_0 + f_1 / h^2
             </div>
           </a>
         
+        
+          <a href="../numerical-linear/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Selanjutnya
+                </span>
+                Numerical Solution of System of Linear Algebraic Equations
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
         
       </nav>
     </div>

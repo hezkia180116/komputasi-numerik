@@ -1,0 +1,950 @@
+
+<!doctype html>
+<html lang="id" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://github.com/hezkia180116/numerical-ordinal/">
+      
+      
+        <meta name="author" content="Hezkia Vialen Anrastra">
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.1.7">
+    
+    
+      
+        <title>Numerical Solutions of Ordinary Differential Equations - Komputasi Numerik</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.19753c6b.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.196e0c26.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#2094f3">
+        
+      
+    
+    
+    
+      
+        
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="blue" data-md-color-accent="indigo">
+      
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#numerical-solutions-of-ordinary-differential-equations" class="md-skip">
+          Lewati ke isi
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="https://github.com/hezkia180116" title="Komputasi Numerik" class="md-header-nav__button md-logo" aria-label="Komputasi Numerik">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            Komputasi Numerik
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              Numerical Solutions of Ordinary Differential Equations
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Cari" placeholder="Cari" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header-nav__source">
+        
+<a href="https://github.com/hezkia180116/komputasi-numerik/" title="Menuju repositori" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    komputasi-numerik
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://github.com/hezkia180116" title="Komputasi Numerik" class="md-nav__button md-logo" aria-label="Komputasi Numerik">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Komputasi Numerik
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/hezkia180116/komputasi-numerik/" title="Menuju repositori" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    komputasi-numerik
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href=".." class="md-nav__link">
+      Beranda
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../turunan-numerik/" class="md-nav__link">
+      Turunan Numerik
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../numerical-linear/" class="md-nav__link">
+      Numerical Solution of System of Linear Algebraic Equations
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Numerical Solutions of Ordinary Differential Equations
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="./" class="md-nav__link md-nav__link--active">
+      Numerical Solutions of Ordinary Differential Equations
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Daftar isi">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Daftar isi
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#metode-euler" class="md-nav__link">
+    Metode Euler
+  </a>
+  
+    <nav class="md-nav" aria-label="Metode Euler">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#contoh" class="md-nav__link">
+    Contoh
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#runge-kutta-method" class="md-nav__link">
+    Runge-Kutta Method
+  </a>
+  
+    <nav class="md-nav" aria-label="Runge-Kutta Method">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#contoh_1" class="md-nav__link">
+    Contoh
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Daftar isi">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Daftar isi
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#metode-euler" class="md-nav__link">
+    Metode Euler
+  </a>
+  
+    <nav class="md-nav" aria-label="Metode Euler">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#contoh" class="md-nav__link">
+    Contoh
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#runge-kutta-method" class="md-nav__link">
+    Runge-Kutta Method
+  </a>
+  
+    <nav class="md-nav" aria-label="Runge-Kutta Method">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#contoh_1" class="md-nav__link">
+    Contoh
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/hezkia180116/komputasi-numerik/edit/master/docs/numerical-ordinal.md" title="Ubah halaman ini" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="numerical-solutions-of-ordinary-differential-equations">Numerical Solutions of Ordinary Differential Equations<a class="headerlink" href="#numerical-solutions-of-ordinary-differential-equations" title="Permanent link">&para;</a></h1>
+<p>Dalam bab ini kita membahas metode numerik untuk ODE . Kami akan membahas dua metode dasar, Metode Euler dan Runge-Kutta Metode.</p>
+<h2 id="metode-euler">Metode Euler<a class="headerlink" href="#metode-euler" title="Permanent link">&para;</a></h2>
+<p>Metode Euler. Metode Euler adalah metode yang paling sederhana dalam menemukan solusi perkiraan untuk persamaan orde pertama. Dari depan rumus perbedaan </p>
+<div>
+<div class="MathJax_Preview">
+f'(x) ≈ \frac{f(x + h) - f(x)}{h}
+</div>
+<script type="math/tex; mode=display">
+f'(x) ≈ \frac{f(x + h) - f(x)}{h}
+</script>
+</div>
+<p>kita punya
+$$
+f(x + h) ≈ f(x) + f'(x)h
+$$</p>
+<p>Sekarang jika x'(t) = f(t, x) adalah persamaan diferensial orde satu, berlaku (1),
+kita punya</p>
+<div>
+<div class="MathJax_Preview">
+x(t + h) ≈ x(t) + f(t, x(t))h.
+</div>
+<script type="math/tex; mode=display">
+x(t + h) ≈ x(t) + f(t, x(t))h.
+</script>
+</div>
+<p>Misalkan kita ingin mencari solusi aproksimasi pada interval [a, b] dengan nilai awal <em>x(a) = x0</em>, interval dibagi menjadi n subinterval masing-masing dengan panjang <em>h = b−a / n</em>, ujung-ujung subintervalnya adalah <em>t0 = a, t1 = a + h, t2 = a + 2h, · · · , tn = a + nh = b</em>. Mulai dengan x0 kita dapat menghitung</p>
+<div>
+<div class="MathJax_Preview">
+x_1 = x_0 + f(t_0, x_0)h
+</div>
+<script type="math/tex; mode=display">
+x_1 = x_0 + f(t_0, x_0)h
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+x_2 = x_1 + f(t_1, x_1)h
+</div>
+<script type="math/tex; mode=display">
+x_2 = x_1 + f(t_1, x_1)h
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+.
+</div>
+<script type="math/tex; mode=display">
+.
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+x_n = x_n−1 + f(t_n−1, x_n−1)h
+</div>
+<script type="math/tex; mode=display">
+x_n = x_n−1 + f(t_n−1, x_n−1)h
+</script>
+</div>
+<h3 id="contoh">Contoh<a class="headerlink" href="#contoh" title="Permanent link">&para;</a></h3>
+<p><strong>Soal</strong> 
+Temukan perkiraan untuk <em>x</em>(1) jika <span><span class="MathJax_Preview">x't = t^2 - e^x sin(t), x(0) = 1</span><script type="math/tex">x't = t^2 - e^x sin(t), x(0) = 1</script></span> dengan <em>h</em>= 0,25.</p>
+<p><strong>Solusi</strong>
+Di sini intervalnya adalah [0, 1], jadi <em>a</em> = 0, <em>b</em> = 1. Karena <em>h</em> = (\frac{b−a}{n}) = 0,25 kita memiliki <em>n</em> = 4 dan kita perlu menghitung <em>x<sub>1</sub>, x<sub>2</sub>, x<sub>3</sub>, x<sub>4</sub></em> mulai dengan x0 = x(0) = 1.</p>
+<div>
+<div class="MathJax_Preview">
+x_1 = x_0 + f(t_0, x_0)h = 1 + f(0, 1) ∗ 0.25 = 0.15853
+</div>
+<script type="math/tex; mode=display">
+x_1 = x_0 + f(t_0, x_0)h = 1 + f(0, 1) ∗ 0.25 = 0.15853
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+x_2 = x_1 + f(t_1, x_1)h = 0.15853 + f(0.25, 0.15853) ∗ 0.25 = 0.01833
+</div>
+<script type="math/tex; mode=display">
+x_2 = x_1 + f(t_1, x_1)h = 0.15853 + f(0.25, 0.15853) ∗ 0.25 = 0.01833
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+x_3 = x_2 + f(t_2, x_2)h = 0.01833 + f(0.5, 0.01833) ∗ 0.25 = 0.23811
+</div>
+<script type="math/tex; mode=display">
+x_3 = x_2 + f(t_2, x_2)h = 0.01833 + f(0.5, 0.01833) ∗ 0.25 = 0.23811
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+x_4 = x_3 + f(t_3, x_3)h = 0.23811 + f(0.75, 0.15853) ∗ 0.25 = 0.30128
+</div>
+<script type="math/tex; mode=display">
+x_4 = x_3 + f(t_3, x_3)h = 0.23811 + f(0.75, 0.15853) ∗ 0.25 = 0.30128
+</script>
+</div>
+<p>Jadi pendekatan untuk x(1) adalah x(1) x<sub>4</sub>= 0,30128. Juga x(0,25) x<sub>1</sub> = 0,15853, x(0,5) x<sub>2</sub> = 0,01833, x(0,75) x<sub>3</sub> = 0,23811. </p>
+<h2 id="runge-kutta-method">Runge-Kutta Method<a class="headerlink" href="#runge-kutta-method" title="Permanent link">&para;</a></h2>
+<p>Ada beberapa metode Runge-Kutta, tetapi metode Runge-Kutta urutan keempat paling populer. Misalkan x'(t) = f(t, x), x(a) = x0. dan h = b−a / n adalah panjang langkah, Metode Runge-Kutta orde keempat diberikan di bawah ini,</p>
+<div>
+<div class="MathJax_Preview">
+k_1 = hf(t_i, x_i)
+</div>
+<script type="math/tex; mode=display">
+k_1 = hf(t_i, x_i)
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+k_2 = hf(t_i + \frac{1}{2} h, x_i + \frac{1}{2} k_1)
+</div>
+<script type="math/tex; mode=display">
+k_2 = hf(t_i + \frac{1}{2} h, x_i + \frac{1}{2} k_1)
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+k_3 = hf(t_i + \frac{1}{2}h, x_i + \frac{1}{2}k_2)
+</div>
+<script type="math/tex; mode=display">
+k_3 = hf(t_i + \frac{1}{2}h, x_i + \frac{1}{2}k_2)
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+k_4 = hf(t_i + h, x_i + k_3)
+</div>
+<script type="math/tex; mode=display">
+k_4 = hf(t_i + h, x_i + k_3)
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+x_{i+1} = x_i + \frac{1}{6}(k_1 + 2k_2 + 2k_3 + k_4)
+</div>
+<script type="math/tex; mode=display">
+x_{i+1} = x_i + \frac{1}{6}(k_1 + 2k_2 + 2k_3 + k_4)
+</script>
+</div>
+<p>Secara umum metode Runge-Kutta memberikan hasil yang lebih akurat dibandingkan dengan metode Euler pada panjang langkah yang sama. Namun, metode Runge-Kutta lebih mahal untuk diterapkan, yaitu, pada setiap langkah, Runge-Kutta membutuhkan lebih banyak komputasi daripada metode Euler (empat evaluasi fungsi dibandingkan satu dalam metode Euler).</p>
+<h3 id="contoh_1">Contoh<a class="headerlink" href="#contoh_1" title="Permanent link">&para;</a></h3>
+<p><strong>Soal</strong> 
+Temukan perkiraan untuk <em>x</em>(1) jika <span><span class="MathJax_Preview">x't = t^2 - e^x sin(t), x(0) = 1</span><script type="math/tex">x't = t^2 - e^x sin(t), x(0) = 1</script></span> dengan <em>h</em>= 0,25.</p>
+<p><strong>Solusi</strong>
+Di sini intervalnya adalah [0, 1], jadi <em>a</em> = 0, <em>b</em> = 1. Karena <em>h</em> = <span><span class="MathJax_Preview">\frac{b-a}{n}</span><script type="math/tex">\frac{b-a}{n}</script></span> = 0,25 kita memiliki <em>n</em> = 4 dan kita perlu menghitung <em>x<sub>1</sub>, x<sub>2</sub>, x<sub>3</sub>, x<sub>4</sub></em> mulai dengan x0 = x(0) = 1.</p>
+<div>
+<div class="MathJax_Preview">
+x_1:
+</div>
+<script type="math/tex; mode=display">
+x_1:
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+k_1 = hf(t_0, x_0) = 0.25 ∗ f(0, 1) = 0
+</div>
+<script type="math/tex; mode=display">
+k_1 = hf(t_0, x_0) = 0.25 ∗ f(0, 1) = 0
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+k_2 = hf(t_0 + \frac{1}{2}h, x_0 + \frac{1}{2}k_1) = f(0.125, 1) = −0.373276
+</div>
+<script type="math/tex; mode=display">
+k_2 = hf(t_0 + \frac{1}{2}h, x_0 + \frac{1}{2}k_1) = f(0.125, 1) = −0.373276
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+k_3 = hf(t_0 + \frac{1}{2}h, x_0 + \frac{1}{2}k_2) = 0.25f(0.125, 1 + 0.5(−0.373276)) = −0.373276
+</div>
+<script type="math/tex; mode=display">
+k_3 = hf(t_0 + \frac{1}{2}h, x_0 + \frac{1}{2}k_2) = 0.25f(0.125, 1 + 0.5(−0.373276)) = −0.373276
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+k_4 = hf(t_0 + h, x_0 + k_3) = 0.25f(0.25, 1 − 0.373276) = −0.309854 
+</div>
+<script type="math/tex; mode=display">
+k_4 = hf(t_0 + h, x_0 + k_3) = 0.25f(0.25, 1 − 0.373276) = −0.309854 
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+x_1 = x0 + \frac{1}{6} (k_1 + 2k_2 + 2k_3 + k_4)
+</div>
+<script type="math/tex; mode=display">
+x_1 = x0 + \frac{1}{6} (k_1 + 2k_2 + 2k_3 + k_4)
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+= 1 + \frac{1}{6} (0 + 2 ∗ (−0.373276) + 2 ∗ (−0.373276) − 0.309854)
+</div>
+<script type="math/tex; mode=display">
+= 1 + \frac{1}{6} (0 + 2 ∗ (−0.373276) + 2 ∗ (−0.373276) − 0.309854)
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+= 0.923911
+</div>
+<script type="math/tex; mode=display">
+= 0.923911
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+t_1 = t_0 + h = 0 + 0.25 = 0.25
+</div>
+<script type="math/tex; mode=display">
+t_1 = t_0 + h = 0 + 0.25 = 0.25
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+x_2:
+</div>
+<script type="math/tex; mode=display">
+x_2:
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+k_1 = hf(t_1, x_1) = 0.25 ∗ f(.25, 0.923911) = −0.560741
+</div>
+<script type="math/tex; mode=display">
+k_1 = hf(t_1, x_1) = 0.25 ∗ f(.25, 0.923911) = −0.560741
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+k_2 = hf(t_1 + \frac{1}{2}h, x_1 + \frac{1}{2}k_1) = f(0.125, 0.923911 + 0.5(−0.560741)) = −0.719601
+</div>
+<script type="math/tex; mode=display">
+k_2 = hf(t_1 + \frac{1}{2}h, x_1 + \frac{1}{2}k_1) = f(0.125, 0.923911 + 0.5(−0.560741)) = −0.719601
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+k_3 = hf(t_1 + \frac{1}{2}h, x_1 + \frac{1}{2}k_2) = 0.25f(0.125, 0.923911 + 0.5(−0.719601)) = −0.702688
+</div>
+<script type="math/tex; mode=display">
+k_3 = hf(t_1 + \frac{1}{2}h, x_1 + \frac{1}{2}k_2) = 0.25f(0.125, 0.923911 + 0.5(−0.719601)) = −0.702688
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+k_4 = hf(t_1 + h, x_1 + k_3) 
+</div>
+<script type="math/tex; mode=display">
+k_4 = hf(t_1 + h, x_1 + k_3) 
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+= 0.25f(0.5, 0.923911 − 0.702688) = −0.763158 
+</div>
+<script type="math/tex; mode=display">
+= 0.25f(0.5, 0.923911 − 0.702688) = −0.763158 
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+x_2 = x_1 + \frac{1}{6}(k_1 + 2k_2 + 2k_3 + k_4) 
+</div>
+<script type="math/tex; mode=display">
+x_2 = x_1 + \frac{1}{6}(k_1 + 2k_2 + 2k_3 + k_4) 
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+= 0.923911 + \frac{1}{6}(−0.560741 + 2 ∗ (−0.719601) + 2 ∗ (−0.702688) − 0.763158)
+= 0.750224
+</div>
+<script type="math/tex; mode=display">
+= 0.923911 + \frac{1}{6}(−0.560741 + 2 ∗ (−0.719601) + 2 ∗ (−0.702688) − 0.763158)
+= 0.750224
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+t_2 = t_1 + h = 0.25 + 0.25 = 0.5
+</div>
+<script type="math/tex; mode=display">
+t_2 = t_1 + h = 0.25 + 0.25 = 0.5
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+x_3:
+</div>
+<script type="math/tex; mode=display">
+x_3:
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+k_1 = hf(t_2, x_2) = 0.25 ∗ f(.5, 0.750224) = −0.765171
+</div>
+<script type="math/tex; mode=display">
+k_1 = hf(t_2, x_2) = 0.25 ∗ f(.5, 0.750224) = −0.765171
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+k_2 = hf(t_2 + \frac{1}{2}h, x_2 + \frac{1}{2}k_1)
+</div>
+<script type="math/tex; mode=display">
+k_2 = hf(t_2 + \frac{1}{2}h, x_2 + \frac{1}{2}k_1)
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+= f(0.625, 0.750224 + 0.5(−0.765171)) = −0.735295
+</div>
+<script type="math/tex; mode=display">
+= f(0.625, 0.750224 + 0.5(−0.765171)) = −0.735295
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+k_3 = hf(t_2 + \frac{1}{2}h, x_2 + \frac{1}{2}k_2)
+</div>
+<script type="math/tex; mode=display">
+k_3 = hf(t_2 + \frac{1}{2}h, x_2 + \frac{1}{2}k_2)
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+= 0.25f(0.625, 0.750224 + 0.5(−0.735295)) = −0.739508
+</div>
+<script type="math/tex; mode=display">
+= 0.25f(0.625, 0.750224 + 0.5(−0.735295)) = −0.739508
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+k_4 = hf(t_2 + h, x_2 + k_3)
+</div>
+<script type="math/tex; mode=display">
+k_4 = hf(t_2 + h, x_2 + k_3)
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+= 0.25f(0.75, 0.750224 − 0.739508) = −0.637224
+</div>
+<script type="math/tex; mode=display">
+= 0.25f(0.75, 0.750224 − 0.739508) = −0.637224
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+x_3 = x_2 + \frac{1}{6}(k_1 + 2k_2 + 2k_3 + k_4) 
+</div>
+<script type="math/tex; mode=display">
+x_3 = x_2 + \frac{1}{6}(k_1 + 2k_2 + 2k_3 + k_4) 
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+= 0.750224 + \frac{1}{6} (−0.765171 + 2 ∗ (−0.735295) + 2 ∗ (−0.739508) − 0.637224)
+</div>
+<script type="math/tex; mode=display">
+= 0.750224 + \frac{1}{6} (−0.765171 + 2 ∗ (−0.735295) + 2 ∗ (−0.739508) − 0.637224)
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+= 0.568891
+</div>
+<script type="math/tex; mode=display">
+= 0.568891
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+t_3 = t_2 + h = 0.5 + 0.25 = 0.75
+</div>
+<script type="math/tex; mode=display">
+t_3 = t_2 + h = 0.5 + 0.25 = 0.75
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+x_4:
+</div>
+<script type="math/tex; mode=display">
+x_4:
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+k_1 = hf(t_3, x_3) = 0.25 ∗ f(0.75, 0.568891) = −0.641483
+</div>
+<script type="math/tex; mode=display">
+k_1 = hf(t_3, x_3) = 0.25 ∗ f(0.75, 0.568891) = −0.641483
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+k_2 = hf(t_3 + \frac{1}{2}h, x_3 + \frac{1}{2}k_1)
+</div>
+<script type="math/tex; mode=display">
+k_2 = hf(t_3 + \frac{1}{2}h, x_3 + \frac{1}{2}k_1)
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+= f(0.875, 0.568891 + 0.5(−0.641483)) = −0.485628
+</div>
+<script type="math/tex; mode=display">
+= f(0.875, 0.568891 + 0.5(−0.641483)) = −0.485628
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+k_3 = hf(t_3 + \frac{1}{2}h, x_3 + \frac{1}{2}k_2)
+</div>
+<script type="math/tex; mode=display">
+k_3 = hf(t_3 + \frac{1}{2}h, x_3 + \frac{1}{2}k_2)
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+= 0.25f(0.875, 0.568891 + 0.5(−0.485628)) = −0.510243
+</div>
+<script type="math/tex; mode=display">
+= 0.25f(0.875, 0.568891 + 0.5(−0.485628)) = −0.510243
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+k_4 = hf(t_3 + h, x_3 + k_3)
+</div>
+<script type="math/tex; mode=display">
+k_4 = hf(t_3 + h, x_3 + k_3)
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+= 0.25f(1, 0.568891 − 0.510243) = −0.308297
+</div>
+<script type="math/tex; mode=display">
+= 0.25f(1, 0.568891 − 0.510243) = −0.308297
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+x_4 = x_3 + \frac{1}{6}(k_1 + 2k_2 + 2k_3 + k_4)
+</div>
+<script type="math/tex; mode=display">
+x_4 = x_3 + \frac{1}{6}(k_1 + 2k_2 + 2k_3 + k_4)
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+= 0.568891 + \frac{1}{6} (−0.641483 + 2 ∗ (−0.485628) + 2 ∗ (−0.510243) − 0.308297)
+</div>
+<script type="math/tex; mode=display">
+= 0.568891 + \frac{1}{6} (−0.641483 + 2 ∗ (−0.485628) + 2 ∗ (−0.510243) − 0.308297)
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+= 0.446327
+</div>
+<script type="math/tex; mode=display">
+= 0.446327
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+t_4 = t_3 + h = 0.75 + 0.25 = 1.0
+</div>
+<script type="math/tex; mode=display">
+t_4 = t_3 + h = 0.75 + 0.25 = 1.0
+</script>
+</div>
+<p>Jadi pendekatan untuk <em>x</em>(1) adalah <em>x</em>(1) ≈ x<sub>4</sub> = 0,446327.</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../numerical-linear/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Sebelumnya
+                </span>
+                Numerical Solution of System of Linear Algebraic Equations
+              </div>
+            </div>
+          </a>
+        
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2021 Hezkia Vialen Anrastra
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/vendor.0ac82a11.min.js"></script>
+      <script src="../assets/javascripts/bundle.f81dfb4d.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Salin ke memori", "clipboard.copied": "Tersalin ke memori", "search.config.lang": "en", "search.config.pipeline": " ", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Cari", "search.result.placeholder": "Ketik untuk mulai pencarian", "search.result.none": "Tidak ada dokumen yang sesuai", "search.result.one": "1 dokumen ditemukan", "search.result.other": "# dokumen ditemukan", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+      <script>
+        app = initialize({
+          base: "..",
+          features: [],
+          search: Object.assign({
+            worker: "../assets/javascripts/worker/search.4ac00218.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+        <script src="../javascripts/extra.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>

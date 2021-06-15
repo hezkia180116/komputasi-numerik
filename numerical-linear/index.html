@@ -1,0 +1,613 @@
+
+<!doctype html>
+<html lang="id" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://github.com/hezkia180116/numerical-linear/">
+      
+      
+        <meta name="author" content="Hezkia Vialen Anrastra">
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.1.7">
+    
+    
+      
+        <title>Numerical Solution of System of Linear Algebraic Equations - Komputasi Numerik</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.19753c6b.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.196e0c26.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#2094f3">
+        
+      
+    
+    
+    
+      
+        
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="blue" data-md-color-accent="indigo">
+      
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#numerical-solutions-of-systems-of-linear-equations" class="md-skip">
+          Lewati ke isi
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="https://github.com/hezkia180116" title="Komputasi Numerik" class="md-header-nav__button md-logo" aria-label="Komputasi Numerik">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            Komputasi Numerik
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              Numerical Solution of System of Linear Algebraic Equations
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Cari" placeholder="Cari" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header-nav__source">
+        
+<a href="https://github.com/hezkia180116/komputasi-numerik/" title="Menuju repositori" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    komputasi-numerik
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://github.com/hezkia180116" title="Komputasi Numerik" class="md-nav__button md-logo" aria-label="Komputasi Numerik">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Komputasi Numerik
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/hezkia180116/komputasi-numerik/" title="Menuju repositori" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    komputasi-numerik
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href=".." class="md-nav__link">
+      Beranda
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../turunan-numerik/" class="md-nav__link">
+      Turunan Numerik
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Numerical Solution of System of Linear Algebraic Equations
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="./" class="md-nav__link md-nav__link--active">
+      Numerical Solution of System of Linear Algebraic Equations
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Daftar isi">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Daftar isi
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#materials-and-methods" class="md-nav__link">
+    Materials and Methods
+  </a>
+  
+    <nav class="md-nav" aria-label="Materials and Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#jacobi-method" class="md-nav__link">
+    Jacobi Method
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gauss-seidel-method" class="md-nav__link">
+    Gauss – Seidel method
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../numerical-ordinal/" class="md-nav__link">
+      Numerical Solutions of Ordinary Differential Equations
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Daftar isi">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Daftar isi
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#materials-and-methods" class="md-nav__link">
+    Materials and Methods
+  </a>
+  
+    <nav class="md-nav" aria-label="Materials and Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#jacobi-method" class="md-nav__link">
+    Jacobi Method
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gauss-seidel-method" class="md-nav__link">
+    Gauss – Seidel method
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/hezkia180116/komputasi-numerik/edit/master/docs/numerical-linear.md" title="Ubah halaman ini" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="numerical-solutions-of-systems-of-linear-equations">Numerical solutions of systems of linear equations<a class="headerlink" href="#numerical-solutions-of-systems-of-linear-equations" title="Permanent link">&para;</a></h1>
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
+<p>Ada beberapa aplikasi dalam sains dan teknik di mana hukum fisika yang relevan segera menghasilkan <em>a</em> himpunan persamaan linear. Sistem persamaan linier (atau sistem linier) adalah kumpulan persamaan linier yang melibatkan himpunan variabel yang sama. Sistem umum persamaan linear <em>m</em> dengan <em>n</em> yang tidak diketahui dapat ditulis sebagai:</p>
+<div>
+<div class="MathJax_Preview">
+a_11 x_1 + a_12 x_2 + .......... a_1n x_n = b_1
+</div>
+<script type="math/tex; mode=display">
+a_11 x_1 + a_12 x_2 + .......... a_1n x_n = b_1
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+a_11 x_1 + a_12 x_2 + .......... a_1n x_n = b_1
+</div>
+<script type="math/tex; mode=display">
+a_11 x_1 + a_12 x_2 + .......... a_1n x_n = b_1
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+.
+</div>
+<script type="math/tex; mode=display">
+.
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+.
+</div>
+<script type="math/tex; mode=display">
+.
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+a_m1 x_1 + a_m2 x_2 + .......... a_mn x_n = b_m
+</div>
+<script type="math/tex; mode=display">
+a_m1 x_1 + a_m2 x_2 + .......... a_mn x_n = b_m
+</script>
+</div>
+<p>Metode numerik adalah cabang matematika yang berhubungan dengan cara yang tepat untuk menemukan solusi untuk berbagai masalah matematika. Di era komputer ini, metode numerik telah menemukan peran penting dalam memecahkan masalah
+berbagai masalah rekayasa dan ilmiah. Analisis numerik adalah studi tentang algoritma yang menggunakan pendekatan numerik untuk masalah analisis matematis Sistem persamaan linier memiliki equation aplikasi di berbagai bidang ilmu pengetahuan seperti riset operasional, fisika, statistika, teknik, dan sosial ilmu pengetahuan. Persamaan jenis ini diperlukan untuk memecahkan parameter yang terlibat. Metode iteratif menggunakan
+solusi awal dan konvergen ke nilai yang dekat dengan solusi eksak dengan memperbaiki awal secara iteratif larutan. Namun, metode iteratif tidak menjamin solusi untuk semua sistem persamaan linier dan mereka adalah lebih sering digunakan untuk menyelesaikan sistem persamaan linier yang jarang dan besar. </p>
+<p>Kami mulai dengan pendekatan ke solusi sebenarnya dan dengan menerapkan metode berulang kali kami menjadi lebih baik dan
+pendekatan yang lebih baik sampai solusi tercapai.</p>
+<p>Ada dua metode iteratif untuk menyelesaikan persamaan simultan.
+1. Metode Jacobi
+2. Metode Gauss-Seidel</p>
+<h2 id="materials-and-methods">Materials and Methods<a class="headerlink" href="#materials-and-methods" title="Permanent link">&para;</a></h2>
+<h3 id="jacobi-method">Jacobi Method<a class="headerlink" href="#jacobi-method" title="Permanent link">&para;</a></h3>
+<p>Metode ini diilustrasikan dengan mengambil contoh
+<img alt="5-1" src="https://thumbs2.imgbox.com/19/92/K80OucXF_t.png" /></p>
+<p>Setelah pembagian dengan konstanta yang sesuai, transposisi persamaan dapat menjadi</p>
+<p><img alt="5-2" src="https://thumbs2.imgbox.com/d9/e7/wIEDnE8E_t.png" /></p>
+<p>Mari kita asumsikan x = 0, y = 0, z = 0 sebagai pendekatan pertama, menggantikan nilai-nilai x, y, z di tangan kanan sisi (2), kita dapatkan x = b1 / a11 , y = b2 / a22 , z = b3 / a33 ini adalah pendekatan kedua untuk solusi persamaan lagi mengganti nilai-nilai ini dari x, y, z di (2) kita mendapatkan pendekatan ketiga. Proses ini diulang sampai dua aproksimasi berturut-turut adalah sama atau hampir sama.</p>
+<h3 id="gauss-seidel-method">Gauss – Seidel method<a class="headerlink" href="#gauss-seidel-method" title="Permanent link">&para;</a></h3>
+<p>Metode Gauss-Seidel, himpunan nilai persamaan (3) yang sama digunakan untuk memverifikasi hasilnya. Berikut kami ilustrasikan bahwa saat menggunakan metode ini kita harus melakukan lebih sedikit perhitungan dan memanfaatkan waktu minimum untuk mengulangi masalah untuk mendapatkan hasil yang sesuai dibandingkan dengan metode Jacobi. Kita tahu bahwa metode Gauss-Seidel adalah modifikasi dari metode Jacobi. 
+Metode ini diilustrasikan dengan mengambil contoh</p>
+<p><img alt="5-2" src="https://thumbs2.imgbox.com/64/53/FI1aMqK7_t.png" /></p>
+<p>Setelah pembagian dengan konstanta dan transposisi yang sesuai, persamaan dapat ditulis sebagai :</p>
+<p><img alt="5-2" src="https://thumbs2.imgbox.com/04/e1/wCZoOQxN_t.png" /></p>
+<p>Langkah 1. Pertama kita taruh y = z = 0 dalam persamaan pertama (4.1) dan X = C1. Kemudian dalam persamaan kedua kita masukkan ini nilai-nilai dari x yaitu C1 dan z 0 , dan dapatkan y , pada persamaan ketiga (4.1). Kami menggunakan nilai x dan y memperoleh sebelumnya untuk mendapatkan z.</p>
+<p>Langkah 2. Kami mengulangi prosedur di atas. Dalam persamaan pertama kami menempatkan nilai y dan z dapatkan. 
+pada langkah 1, dan mentakdirkan x. Dengan menggunakan nilai baru dari x dan nilai z diperoleh Pada langkah 1 kami menentukan sebelumnya y dan seterusnya.
+Dengan kata lain, nilai terbaru dari yang tidak diketahui digunakan di setiap langkah.
+Perhatikan persamaan berikut
+$$
+a_1 x + b_1 y + c_1 z = d_1
+$$</p>
+<div>
+<div class="MathJax_Preview">
+a_2 x + b_2 y + c_2 z = d_2
+</div>
+<script type="math/tex; mode=display">
+a_2 x + b_2 y + c_2 z = d_2
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+a_3 x + b_3 y + c_3 z = d_3
+</div>
+<script type="math/tex; mode=display">
+a_3 x + b_3 y + c_3 z = d_3
+</script>
+</div>
+<p>Persamaan di atas dapat ditulis ulang menjadi
+$$
+x = 1 / a_1 [d_1 - b_1 y - C_1 z]
+$$</p>
+<div>
+<div class="MathJax_Preview">
+y = 1 / b_2 [d_2 - a_2 y - C_2 z]
+</div>
+<script type="math/tex; mode=display">
+y = 1 / b_2 [d_2 - a_2 y - C_2 z]
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+z = 1 / c_3 [d_3 - a_3 y - b_3 z]
+</div>
+<script type="math/tex; mode=display">
+z = 1 / c_3 [d_3 - a_3 y - b_3 z]
+</script>
+</div>
+<p>Perkiraan awal</p>
+<div>
+<div class="MathJax_Preview">
+x = x_0,y = y_0 z = z_0
+</div>
+<script type="math/tex; mode=display">
+x = x_0,y = y_0 z = z_0
+</script>
+</div>
+<p>Mencari x = x<sub>1</sub></p>
+<div>
+<div class="MathJax_Preview">
+x_1 = 1 / a_1 [d_1 - b_1 y_0 - c_1 Z_0]
+</div>
+<script type="math/tex; mode=display">
+x_1 = 1 / a_1 [d_1 - b_1 y_0 - c_1 Z_0]
+</script>
+</div>
+<p>Mencari y = y<sub>1</sub>, taruh x = x<sub>1</sub> , z = z<sub>0</sub></p>
+<div>
+<div class="MathJax_Preview">
+y_1 = 1 / b_1 [d_1 - a_2 x_1 - c_2 z_0]
+</div>
+<script type="math/tex; mode=display">
+y_1 = 1 / b_1 [d_1 - a_2 x_1 - c_2 z_0]
+</script>
+</div>
+<p>Mencari z = z<sub>1</sub>, taruh x = x<sub>1</sub> , y = y<sub>1</sub></p>
+<div>
+<div class="MathJax_Preview">
+z_1 = 1 / c_1 [d_3 - a_4 x_1 - b_3 y_1]
+</div>
+<script type="math/tex; mode=display">
+z_1 = 1 / c_1 [d_3 - a_4 x_1 - b_3 y_1]
+</script>
+</div>
+<p>dan seterusnya.</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../turunan-numerik/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Sebelumnya
+                </span>
+                Turunan Numerik
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../numerical-ordinal/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Selanjutnya
+                </span>
+                Numerical Solutions of Ordinary Differential Equations
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2021 Hezkia Vialen Anrastra
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/vendor.0ac82a11.min.js"></script>
+      <script src="../assets/javascripts/bundle.f81dfb4d.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Salin ke memori", "clipboard.copied": "Tersalin ke memori", "search.config.lang": "en", "search.config.pipeline": " ", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Cari", "search.result.placeholder": "Ketik untuk mulai pencarian", "search.result.none": "Tidak ada dokumen yang sesuai", "search.result.one": "1 dokumen ditemukan", "search.result.other": "# dokumen ditemukan", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+      <script>
+        app = initialize({
+          base: "..",
+          features: [],
+          search: Object.assign({
+            worker: "../assets/javascripts/worker/search.4ac00218.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+        <script src="../javascripts/extra.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>
